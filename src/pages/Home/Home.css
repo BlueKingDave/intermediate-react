@@ -4,6 +4,11 @@
   padding: 2rem;
   text-align: center;
 }
+.dummy-content {
+  height: 100vh;
+  overflow-y: scroll; /* Adds a vertical scrollbar */
+  box-shadow: 2px 2px 20px rgba(95, 0, 87, 0.67); /* Correct color format */
+}
 
 .logo {
   height: 6em;

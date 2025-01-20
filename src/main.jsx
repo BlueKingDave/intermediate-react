@@ -7,12 +7,23 @@ import Freelancers from './pages/Freelancers';
 import Results from './pages/Results';
 import Header from './components/Header';
 import Error from './components/Error'; // Import Error component
+import { createGlobalStyle } from 'styled-components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const GlobalStyle = createGlobalStyle`
+   div {
+      font-family: 'Trebuchet MS', Helvetica, sans-serif;
+   }
+   body {
+    margin:0;
+  }
+`;
 
 root.render(
   <React.StrictMode>
     <Router>
+      <GlobalStyle />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
