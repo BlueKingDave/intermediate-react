@@ -1,37 +1,38 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // React 18
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Survey from './pages/Survey';
-import Freelancers from './pages/Freelancers';
 import Results from './pages/Results';
+import Freelancers from './pages/Freelancers';
 import Header from './components/Header';
-import Error from './components/Error'; // Import Error component
-import { createGlobalStyle } from 'styled-components';
+import Error from './components/Error';
+import Footer from './components/Footer';
+import GlobalStyle from './utils/style/GlobalStyle'; // Use the updated GlobalStyle
+import { ThemeProvider, SurveyProvider } from './utils/context'; // Import your custom ThemeProvider
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const GlobalStyle = createGlobalStyle`
-   div {
-      font-family: 'Trebuchet MS', Helvetica, sans-serif;
-   }
-   body {
-    margin:0;
-  }
-`;
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Router>
-      <GlobalStyle />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/freelancers" element={<Freelancers />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/survey/:questionNumber" element={<Survey />} />
-        <Route path="*" element={<Error />} /> {/* Catch-all route */}
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <SurveyProvider>
+        {' '}
+        {/* Use your custom ThemeProvider */}
+        <Router>
+          <GlobalStyle />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/survey/:questionNumber" element={<Survey />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/freelancers" element={<Freelancers />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </SurveyProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
