@@ -9,7 +9,7 @@ const FooterContainer = styled.footer`
   justify-content: center;
   padding-top: 60px;
   background-color: ${({ theme }) =>
-    theme === 'light' ? '#f8f9fa' : '#343a40'};
+    theme === 'light' ? '#f8f9fa' : '#233344'};
   color: ${({ theme }) => (theme === 'light' ? '#212529' : '#ffffff')};
 `;
 
@@ -26,7 +26,7 @@ const NightModeButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) =>
-      theme === 'light' ? '#dddddd' : '#444444'};
+      theme === 'light' ? '#dddddd' : '#233344'};
     color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
   }
 `;
